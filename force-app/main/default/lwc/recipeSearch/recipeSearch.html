@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Prepare Recipe">
+        <div class="slds-var-m-around_medium">
+            <lightning-layout>
+                <!-- search bar -->
+                <lightning-layout-item size="9" padding="around-small">
+                    <lightning-input
+                        type="search"
+                        variant="label-hidden"
+                        placeholder="input an ingredient and hit search to see recipes"
+                        onchange={changeHandler}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <!-- search button -->
+                <lightning-layout-item size="1" padding="around-small">
+                    <lightning-button
+                        label="Search"
+                        variant="neutral"
+                        onclick={searchHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+
+                <!-- random recipe button -->
+                <lightning-layout-item size="2" padding="around-small">
+                    <lightning-button
+                        label="Get Random Recipe"
+                        variant="brand"
+                        onclick={randomRecipeHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <!-- results -->
+            <template lwc:if={recipes}>
+                <template for:each={recipes} for:item="recipe">
+                    <c-recipe
+                        key={recipe.id}
+                        recipe-id={recipe.id}
+                        recipe-image={recipe.image}
+                        title={recipe.title}
+                        summary={recipe.summary}
+                        price-per-serving={recipe.pricePerServing}
+                        ready-in-minutes={recipe.readyInMinutes}
+                        dish-types={recipe.dishTypes}
+                        diets={recipe.diets}>
+                    </c-recipe>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

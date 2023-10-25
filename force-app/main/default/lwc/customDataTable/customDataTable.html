@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Scenarios">
+        <div class="slds-var-m-around_medium">
+            <div class="slds-var-m-bottom_medium">
+                <lightning-combobox
+                    variant="label-hidden"
+                    options={accounts}
+                    value={selectedAccount}
+                    onchange={handleAccountChange}>
+                </lightning-combobox>
+            </div>
+            <div>
+                <lightning-button label="Add Scenario" onclick={handleAddRecord}></lightning-button>
+                <lightning-button label="Toggle Edit Mode" onclick={toggleEditMode}></lightning-button>
+                <template lwc:if={contacts}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={contacts}
+                        columns={columns}
+                        onsave={handleSave}
+                        is-editable="true">
+                    </lightning-datatable>
+                </template>
+            </div>
+        </div>        
+    </lightning-card>
+</template>
