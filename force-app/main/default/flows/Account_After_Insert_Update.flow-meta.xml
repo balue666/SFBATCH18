@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Create a high profile opportunity</description>
+        <name>Create_Opportunity</name>
+        <label>Create Opportunity</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <actionName>NewOpportunity</actionName>
+        <actionType>quickAction</actionType>
+        <faultConnector>
+            <targetReference>Application_Log</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>Name</name>
+            <value>
+                <stringValue>{!$Record.Name} Opp</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>AccountId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>CloseDate</name>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>StageName</name>
+            <value>
+                <stringValue>Prospecting</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Amount</name>
+            <value>
+                <elementReference>$Record.AnnualRevenue</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <description>All automations after an account record is created or updated</description>
+    <environments>Default</environments>
+    <interviewLabel>Account - After Insert/Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - After Insert/Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Populate customer priority on the related contacts</description>
+        <name>Populate_Customer_Priority</name>
+        <label>Populate Customer Priority</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>Create_Opportunity</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Application_Log</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Customer_Priority__c</field>
+            <value>
+                <stringValue>High Profile</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Contacts</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Populate_Customer_Priority</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AnnualRevenue</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>5000000.0</numberValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Application_Log</name>
+        <label>Application Log</label>
+        <locationX>440</locationX>
+        <locationY>539</locationY>
+        <flowName>Application_Log</flowName>
+        <inputAssignments>
+            <name>ExceptionMessage</name>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>ExceptionType</name>
+            <value>
+                <stringValue>DML Exception</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Origin</name>
+            <value>
+                <stringValue>Flow: Account - After Insert/Update</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>StackTrace</name>
+            <value>
+                <elementReference>$Flow.InterviewGuid</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

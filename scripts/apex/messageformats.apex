@@ -95,3 +95,8 @@ RestCallouts.getProducts();
 RestCallouts.getAirlines();
 RestCallouts.getRandomRecipe();
 RestCallouts.getCaseFromOrg2();
+
+ParksCallout.getParksByCountry('United States');
+CalculatorCallouts.addNumbers(20,30);
+CalculatorCallouts.multiplyNumbers(20,30);
+CalculatorCallouts.divideNumbers(30,20);

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>GetToDoAction</name>
+        <label>GetToDoAction</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <actionName>GetToDoExternaleService.GetToDoCallout</actionName>
+        <actionType>externalService</actionType>
+        <connector>
+            <targetReference>Callout_Status</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>todoId</name>
+            <value>
+                <elementReference>Enter_ToDo_ID</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <decisions>
+        <name>Callout_Status</name>
+        <label>Callout Status</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Error_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Failed</defaultConnectorLabel>
+        <rules>
+            <name>Succeeded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetToDoAction.responseCode</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>200.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_ToDo_Record</targetReference>
+            </connector>
+            <label>Succeeded</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Get ToDo Callout {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get ToDo Callout</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_ToDo_Record</name>
+        <label>Create ToDo Record</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <connector>
+            <targetReference>Success_Screen</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Completed__c</field>
+            <value>
+                <elementReference>GetToDoAction.2XX.completed</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>GetToDoAction.2XX.todo</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ToDo_Id__c</field>
+            <value>
+                <elementReference>GetToDoAction.2XX.id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>User_ID__c</field>
+            <value>
+                <elementReference>GetToDoAction.2XX.userId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ToDo__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <screens>
+        <description>Screen to display error message</description>
+        <name>Error_Screen</name>
+        <label>Error Screen</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Error_Message</name>
+            <fieldText>&lt;p&gt;An error occurred while retrieving the details.&lt;/p&gt;&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;&lt;p&gt;{!GetToDoAction.defaultExc}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen to display success message</description>
+        <name>Success_Screen</name>
+        <label>Success Screen</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Success_Message</name>
+            <fieldText>&lt;p&gt;ToDo record has been retrieved successfully for the given id&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Screen to enter the id of the record that needs to be fetched</description>
+        <name>ToDo_Id_Entry_Screen</name>
+        <label>ToDo Id Entry Screen</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>GetToDoAction</targetReference>
+        </connector>
+        <fields>
+            <name>Enter_ToDo_ID</name>
+            <dataType>String</dataType>
+            <fieldText>Enter ToDo ID</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <nextOrFinishButtonLabel>Get ToDo Record</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>ToDo_Id_Entry_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+</Flow>

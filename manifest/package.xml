@@ -27,7 +27,13 @@
     <types>
         <members>Application_Log__c</members>
         <members>Ecommerce_Product__c</members>
+        <members>Employee__c</members>
+        <members>ToDo__c</members>
         <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Flow</name>
     </types>
     <types>
         <members>*</members>
