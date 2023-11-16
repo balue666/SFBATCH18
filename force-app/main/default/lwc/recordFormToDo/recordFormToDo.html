@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="ToDo FORM" icon-name="custom:custom19">
+        <div class="slds-var-m-horizontal_medium">
+            <lightning-record-form
+                object-api-name={objectName}
+                record-id={recordId}
+                columns="2"
+                layout-type="Full"
+                mode="view"
+                onsuccess={successHandler}>
+            </lightning-record-form>
+        </div>
+    </lightning-card>
+</template>

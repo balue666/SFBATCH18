@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="PRODUCTS">
+        <div class="slds-var-m-horizontal_medium">
+            <template for:each={products} for:item="prod">
+                <div key={prod.Id} class="slds-var-m-bottom_small">
+                    <div class="slds-box slds-text-color_inverse" style="background-color: #16325C;">
+                        <strong>{prod.ProductName}</strong> <br/>
+                        {prod.Cost} <br/>
+                        {prod.Category}
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="CONDITIONAL RENDERING">
+        <div class="slds-var-m-horizontal_medium">
+            <!-- button -->
+            <lightning-button
+                label="Show Content"
+                variant="brand"
+                onclick={clickHandler}>
+            </lightning-button>
+
+            <template lwc:if={showData}>
+                <div>Here's another example that creates a button with the brand variant, with a label and icon. The icon is positioned to the left of the label by default, so the example uses icon-position to display it on the right.</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

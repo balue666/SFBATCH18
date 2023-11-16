@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="ToDo VIEW FORM" icon-name="custom:custom19">
+        <div class="slds-var-m-horizontal_medium">
+            <lightning-record-view-form
+                object-api-name={objectName}
+                record-id={recordId}>
+                <!-- fields -->
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <div style="background-color: rgb(152, 243, 152);">
+                            <lightning-output-field field-name={fields.name}></lightning-output-field>
+                        </div>
+                        <lightning-output-field field-name={fields.todoId}></lightning-output-field>
+                        <lightning-output-field field-name={fields.userId}></lightning-output-field>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-output-field field-name={fields.owner}></lightning-output-field>
+                        <lightning-output-field field-name={fields.completed}></lightning-output-field>
+                        <div style="background-color: rgb(176, 176, 247);">
+                            <lightning-output-field field-name={fields.intStatus}></lightning-output-field>
+                        </div>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </div>
+    </lightning-card>
+</template>

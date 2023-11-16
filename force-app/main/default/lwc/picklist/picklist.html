@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="COMBO BOX">
+        <div class="slds-var-m-horizontal_medium">
+            <lightning-combobox
+                label="Select the country"
+                onchange={changeHandler}
+                options={options}>
+            </lightning-combobox>
+            <div class="slds-var-p-top_small">Selected Country: {selectedCountry}</div>
+        </div>
+    </lightning-card>
+</template>

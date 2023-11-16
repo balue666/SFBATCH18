@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="OPPORTUNITIES">
+        <div class="slds-var-m-horizontal_medium">
+            <template for:each={opps} for:item="opp">
+                <div key={opp.Id} class="slds-var-m-bottom_x-small">
+                    <div class="slds-box slds-text-color_success">
+                        <strong>{opp.AccountName}</strong> <br/>
+                        {opp.Amount}, {opp.StageName} <br/>
+                        {opp.Type} <br/>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

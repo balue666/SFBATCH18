@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="CONDITIONAL RENDERING">
+        <div class="slds-var-m-horizontal_medium">
+            <template lwc:if={showData}>
+                <div>I am visible because the value of showData is true</div>
+            </template>
+            <template lwc:else>
+                <div>I am visible because the value of showData is false</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
