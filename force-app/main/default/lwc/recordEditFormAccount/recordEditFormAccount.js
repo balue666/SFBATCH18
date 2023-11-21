@@ -6,6 +6,7 @@ import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
 import REVENUE_FIELD from '@salesforce/schema/Account.AnnualRevenue';
 import RATING_FIELD from '@salesforce/schema/Account.Rating';
 import WEBSITE_FIELD from '@salesforce/schema/Account.Website';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class RecordEditFormAccount extends LightningElement {
     objectName = ACCOUNT_OBJECT;
@@ -20,6 +21,10 @@ export default class RecordEditFormAccount extends LightningElement {
     };
 
     successHandler() {
-        
+        const toast = new ShowToastEvent({
+            title: 'Account record has been saved successfully!',
+            variant: 'success'
+        });
+        this.dispatchEvent(toast);
     }
 }

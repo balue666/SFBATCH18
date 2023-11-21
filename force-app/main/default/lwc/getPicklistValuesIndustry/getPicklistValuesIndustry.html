@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="INDUSTRY PICKLIST" icon-name="standard:account">
+        <div class="slds-var-m-horizontal_medium">
+            <template lwc:if={industryOptions}>
+                <lightning-combobox
+                    label="Select Industry"
+                    options={industryOptions}>
+                </lightning-combobox>
+            </template>
+        </div>
+    </lightning-card>
+</template>

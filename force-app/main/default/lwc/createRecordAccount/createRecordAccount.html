@@ -1,0 +1,62 @@
+<template>
+    <lightning-card title="ACCOUNT FORM" icon-name="standard:account">
+        <div class="slds-var-m-horizontal_medium">
+            <form class="accountform">
+                <!-- Account Name -->
+                <lightning-input
+                    type="text"
+                    name="Name"
+                    label="Account Name"
+                    onchange={changeHandler}>
+                </lightning-input>
+
+                <!-- Account Type -->
+                <lightning-combobox
+                    name="Type"
+                    label="Account Type"
+                    options={typeOptions}
+                    onchange={changeHandler}>
+                </lightning-combobox>
+
+                <!-- Account Industry -->
+                <lightning-combobox
+                    name="Industry"
+                    label="Account Industry"
+                    options={industryOptions}
+                    onchange={changeHandler}>
+                </lightning-combobox>
+
+                <!-- Annual Revenue -->
+                <lightning-input
+                    type="number"
+                    name="AnnualRevenue"
+                    label="Annual Revenue"
+                    onchange={changeHandler}>
+                </lightning-input>
+
+                <!-- Website -->
+                <lightning-input
+                    type="url"
+                    name="Website"
+                    label="Website"
+                    onchange={changeHandler}>
+                </lightning-input>
+
+                <!-- buttons -->
+                <div class="slds-align_absolute-center slds-var-m-top_small">
+                    <lightning-button
+                        label="Cancel"
+                        variant="neutral"
+                        class="slds-var-m-right_x-small"
+                        onclick={cancelHandler}>
+                    </lightning-button>
+                    <lightning-button
+                        label="Create"
+                        variant="brand"
+                        onclick={createHandler}>
+                    </lightning-button>
+                </div>
+            </form>
+        </div>
+    </lightning-card>
+</template>
