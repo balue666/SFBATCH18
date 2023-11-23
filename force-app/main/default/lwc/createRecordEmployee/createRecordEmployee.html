@@ -1,0 +1,54 @@
+<template>
+    <lightning-card title="EMPLOYEE FORM" icon-name="standard:contact">
+        <div class="slds-var-m-horizontal_medium">
+            <form class="empform">
+                <!-- first name -->
+                <lightning-input
+                    type="text"
+                    name="First_Name__c"
+                    label="First Name"
+                    onchange={changeHandler}>
+                </lightning-input>
+
+                <!-- last name -->
+                <lightning-input
+                    type="text"
+                    name="Last_Name__c"
+                    label="Last Name"
+                    onchange={changeHandler}>
+                </lightning-input>
+
+                <!-- gender -->
+                <lightning-combobox
+                    name="Gender__c"
+                    label="Gender"
+                    options={genderOptions}
+                    onchange={changeHandler}>
+                </lightning-combobox>
+
+                <!-- email -->
+                <lightning-input
+                    type="email"
+                    name="Email__c"
+                    label="Email"
+                    onchange={changeHandler}>
+                </lightning-input>
+
+                <!-- buttons -->
+                <div class="slds-align_absolute-center slds-var-m-top_small">
+                    <lightning-button
+                        label="Cancel"
+                        variant="neutral"
+                        class="slds-var-m-right_x-small"
+                        onclick={cancelHandler}>
+                    </lightning-button>
+                    <lightning-button
+                        label="Create"
+                        variant="brand"
+                        onclick={createHandler}>
+                    </lightning-button>
+                </div>
+            </form>
+        </div>
+    </lightning-card>
+</template>

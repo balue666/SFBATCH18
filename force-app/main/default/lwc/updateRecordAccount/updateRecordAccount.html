@@ -1,0 +1,64 @@
+<template>
+    <lightning-card title="EDIT FORM" icon-name="standard:account">
+        <div class="slds-var-m-horizontal_medium">
+            <form class="accform">
+                <template lwc:if={acc}>
+                    <!-- Account Name -->
+                    <lightning-input
+                        type="text"
+                        name="Name"
+                        value={acc.fields.Name.value}
+                        label="Account Name"
+                        onchange={changeHandler}>
+                    </lightning-input>
+
+                    <!-- Account Type -->
+                    <lightning-combobox
+                        name="Type"
+                        label="Account Type"
+                        value={acc.fields.Type.value}
+                        options={typeOptions}
+                        onchange={changeHandler}>
+                    </lightning-combobox>
+
+                    <!-- Industry -->
+                    <lightning-combobox
+                        name="Industry"
+                        label="Industry"
+                        value={acc.fields.Industry.value}
+                        options={industryOptions}
+                        onchange={changeHandler}>
+                    </lightning-combobox>
+
+                    <!-- Annual Revenue -->
+                    <lightning-input
+                        type="number"
+                        name="AnnualRevenue"
+                        value={acc.fields.AnnualRevenue.value}
+                        label="Annual Revenue"
+                        onchange={changeHandler}>
+                    </lightning-input>
+
+                    <!-- Website -->
+                    <lightning-input
+                        type="url"
+                        name="Website"
+                        value={acc.fields.Website.value}
+                        label="Website"
+                        onchange={changeHandler}>
+                    </lightning-input>
+                </template>
+
+                <!-- button -->
+                <div class="slds-align_absolute-center slds-var-m-top_small">
+                    <lightning-button
+                        label="Update Account"
+                        variant="success"
+                        onclick={recordUpdateHandler}>
+                    </lightning-button>
+                </div>
+
+            </form>
+        </div>
+    </lightning-card>
+</template>
