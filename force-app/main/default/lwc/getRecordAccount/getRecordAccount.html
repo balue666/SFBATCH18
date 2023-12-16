@@ -2,6 +2,7 @@
     <lightning-card title="GET ACCOUNT RECORD" icon-name="standard:account">
         <div class="slds-var-m-horizontal_medium">
             <template lwc:if={account}>
+                <div><strong>ACCOUNT DETAILS</strong></div>
                 <div><strong>Name: </strong>{account.fields.Name.value}</div>
                 <div><strong>Type: </strong>{account.fields.Type.value}</div>
                 <div><strong>Industry: </strong>{account.fields.Industry.value}</div>
