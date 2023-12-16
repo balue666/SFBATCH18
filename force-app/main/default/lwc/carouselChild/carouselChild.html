@@ -1,0 +1,14 @@
+<template>
+    <lightning-carousel scroll-duration="10">
+        <template for:each={cards} for:item="card">
+            <lightning-carousel-image
+                key={card.src}
+                src={card.src}
+                header={card.header}
+                description={card.description}
+                alternative-text={card.alternativeText}
+                href={card.href}>
+            </lightning-carousel-image>
+        </template>
+    </lightning-carousel>
+</template>

@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="P2C Primitives" icon-name="action:edit_groups">
+        <div class="slds-var-m-horizontal_medium">
+            <div>Parent to Child Communication passing primitives</div>
+
+            <c-ptc-primitives-child1
+                full-name={record.name}
+                age={record.age}
+                stay={record.location}>
+            </c-ptc-primitives-child1>
+        </div>
+    </lightning-card>
+</template>

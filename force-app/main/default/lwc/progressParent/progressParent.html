@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="PROGRESS BAR" icon-name="action:announcement">
+        <div class="slds-var-m-horizontal_medium">
+
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <lightning-combobox
+                        name="Progress Size"
+                        options={progressOptions}
+                        onchange={changeHandler}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-input
+                        name="Progress Value"
+                        type="number"
+                        placeholder="Enter progress value"
+                        onchange={changeHandler}>
+                    </lightning-input>
+                </div>
+            </div> 
+
+            <c-progress-child
+                prog-size={size}
+                prog-value={value}>
+            </c-progress-child>
+
+        </div>
+    </lightning-card>
+</template>

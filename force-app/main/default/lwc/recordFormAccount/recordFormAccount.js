@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { api, LightningElement } from 'lwc';
 import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import Name from '@salesforce/schema/Account.Name';
 import Type from '@salesforce/schema/Account.Type';
@@ -7,11 +7,13 @@ import AnnualRevenue from '@salesforce/schema/Account.AnnualRevenue';
 import Rating from '@salesforce/schema/Account.Rating';
 import Website from '@salesforce/schema/Account.Website';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import USER_ID from '@salesforce/user/Id';
 
 export default class RecordFormAccount extends LightningElement {
     objectName = ACCOUNT_OBJECT;
-    recordId = '0015h00001SybD1AAJ';
+    @api recordId // = '0015h00001SybD1AAJ';
     fields = [Name, Type, Industry, AnnualRevenue, Rating, Website];
+    userId = USER_ID;
 
     successHandler() {
         const toast = new ShowToastEvent({

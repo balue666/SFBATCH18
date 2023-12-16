@@ -1,0 +1,18 @@
+.buttons-sections{
+    border: 4px solid green;
+    border-radius: 6px;
+    padding: 20px;
+    width: 40%;
+}
+.result-section{
+    border: 4px solid navy;
+    border-radius: 6px;
+    margin-top: 12px;
+    padding: 20px;
+}
+.result-header{
+    background-color: darkgreen;
+    color: white;
+    padding: 6px;
+    margin-bottom: 6px;
+}

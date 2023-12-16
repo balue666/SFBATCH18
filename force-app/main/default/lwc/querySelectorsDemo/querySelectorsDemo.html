@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="QUERY SELECTORS" icon-name="action:add_photo_video">
+        <div class="slds-var-m-horizontal_medium">
+            <h1>This is a header tag.</h1>
+            <template for:each={fruits} for:item="fruit">
+                <div class="child" key={fruit}>{fruit}</div>
+            </template>
+
+            <lightning-button
+                label="Click Me"
+                variant="success"
+                onclick={clickHandler}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

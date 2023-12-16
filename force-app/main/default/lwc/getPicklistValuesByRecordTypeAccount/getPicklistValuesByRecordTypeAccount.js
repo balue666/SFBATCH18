@@ -6,8 +6,6 @@ export default class GetPicklistValuesByRecordTypeAccount extends LightningEleme
 
     typeOptions;
     industryOptions;
-    selectedType;
-    selectedIndustry;
 
     @wire(getObjectInfo, {objectApiName: ACCOUNT_OBJECT})
     accountInfo;
@@ -23,14 +21,6 @@ export default class GetPicklistValuesByRecordTypeAccount extends LightningEleme
         }
         if(error) {
             console.error(error);
-        }
-    }
-
-    changeHandler(event) {
-        if(event.target.label === 'Type') {
-            this.selectedType = event.target.value;
-        } else {
-            this.selectedIndustry = event.target.value;
         }
     }
 }

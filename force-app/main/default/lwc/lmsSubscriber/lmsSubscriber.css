@@ -1,0 +1,10 @@
+.section-msg-available {
+    background-color: #2ec93b;
+    padding: 9px;
+    font-weight: 500;
+}
+.section-msg-unavailable {
+    background-color: #fc7474;
+    padding: 9px;
+    font-weight: 500;
+}

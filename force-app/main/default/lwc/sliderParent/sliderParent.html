@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="SLIDER COMP" icon-name="action:fallback">
+        <lightning-button
+            label="Reset"
+            variant="brand"
+            slot="actions"
+            onclick={resetHandler}>
+        </lightning-button>
+        <div class="slds-var-m-horizontal_medium">
+            <lightning-input
+                variant="label-hidden"
+                placeholder="Enter volume you wish"
+                onchange={changeHandler}>
+            </lightning-input>
+
+            <c-slider-child
+                slider-value={volume}>
+            </c-slider-child>
+        </div>
+    </lightning-card>
+</template>

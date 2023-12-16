@@ -27,3 +27,17 @@ List<Account> childrenAccounts = parentAcc.ChildAccounts;
 for(Account acc : childrenAccounts) {
     System.debug('Child Account: ' + acc.Name);
 }
+
+SFACallouts.getEcomProducts();
+
+
+Entry => When Ecom product record is getting created without Product ID populated
+Write a trigger, which calls a handler method. while iterating over the records in handler, call a future method;
+
+future method takes 18 digit record id as input.
+    1. Query for the entire record data.
+    2. Convert the record into wrapper. wrapper into json
+    3. prepare http request & set everything there including this json body
+    4. internet
+    5. send the request over http
+    6. process the response

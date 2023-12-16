@@ -1,0 +1,54 @@
+<template>
+    <lightning-card title="ACCOUNT CONTROLS" icon-name="standard:account">
+        <div class="slds-var-m-horizontal_medium">
+            <!-- section to display buttons -->
+            <div class="slds-align_absolute-center buttons-sections">
+                <lightning-button
+                    label="Show All Accounts"
+                    variant="brand-outline"
+                    class="slds-var-m-right_x-small"
+                    onclick={fetchAllAccounts}>
+                </lightning-button>
+                <lightning-button
+                    label="Total Revenue"
+                    variant="brand"
+                    class="slds-var-m-right_x-small"
+                    onclick={fetchTotalRevenue}>
+                </lightning-button>
+                <lightning-button
+                    label="Highest Revenue"
+                    variant="success"
+                    onclick={fetchHighestRevenue}>
+                </lightning-button>
+            </div>
+
+            <!-- section to display all accounts table -->
+            <template lwc:if={showAllAccounts}>
+                <div class="result-section">
+                    <div class="result-header">All Available Accounts</div>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={accounts}
+                        columns={columns}>
+                    </lightning-datatable>
+                </div>
+            </template>
+
+            <!-- section to display total revenue -->
+            <template lwc:if={showTotalRevenue}>                
+                <div class="result-section">
+                    <div class="result-header">Total Revenue</div>
+                    Total Revenue: {totalRevenue}
+                </div>
+            </template>
+
+            <!-- section to display highest revenue -->
+            <template lwc:if={showHighestRevenue}>
+                <div class="result-section">
+                    <div class="result-header">Highest Revenue</div>
+                    Highest Revenue: {highestRevenue}
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

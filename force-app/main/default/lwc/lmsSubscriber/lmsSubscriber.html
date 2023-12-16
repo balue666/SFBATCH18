@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="LMS SUBSCRIBER" icon-name="custom:custom112">
+        <div class="slds-var-m-horizontal_medium">
+            <template lwc:if={receivedMsg}>
+                <div class="section-msg-available">
+                    Message received... <br/>
+                    {receivedMsg}
+                </div>
+            </template>
+            <template lwc:else>
+                <div class="section-msg-unavailable">
+                    Tik Tok... <br/>
+                    No messages received yet.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

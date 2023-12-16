@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-var-m-top_small">
+        <div style="background: lightgray;
+        text-transform: uppercase;
+        padding: 5px;
+        font-weight: bold;
+        margin-bottom: 4px;">Search Results</div>
+        <template lwc:if={records}>
+            <lightning-datatable
+                key-field="Id"
+                data={records}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+        <template lwc:if={errors}>
+            {errors}
+        </template>
+    </div>
+</template>

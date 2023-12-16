@@ -3,7 +3,7 @@
     <fullName>Employee_ID__c</fullName>
     <externalId>false</externalId>
     <label>Employee ID</label>
-    <precision>4</precision>
+    <precision>10</precision>
     <required>false</required>
     <scale>0</scale>
     <trackTrending>false</trackTrending>

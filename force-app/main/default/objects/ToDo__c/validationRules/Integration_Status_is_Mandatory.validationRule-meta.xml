@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Integration_Status_is_Mandatory</fullName>
+    <active>true</active>
+    <description>Integration Status is Mandatory</description>
+    <errorConditionFormula>ISBLANK(Integration_Status__c)</errorConditionFormula>
+    <errorMessage>Please enter a default value in the integration status before you save the record</errorMessage>
+</ValidationRule>

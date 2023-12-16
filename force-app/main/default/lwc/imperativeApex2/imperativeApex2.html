@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="ACCOUNT HANDLER" icon-name="standard:account">
+        <div class="slds-var-m-horizontal_medium">
+            <lightning-combobox
+                label="Select Industry"
+                options={industryOptions}
+                value={selectedIndustry}
+                onchange={changeHandler}>
+            </lightning-combobox>
+            <div class="slds-var-m-top_medium">
+                <template lwc:if={records}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={records}
+                        columns={columns}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                </template>
+                <template lwc:if={messages}>
+                    <div style="background-color: red; padding: 6px; color: white">
+                        {messages}
+                    </div>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="MODAL COMPONENT" icon-name="custom:custom26">
+        <div class="slds-var-m-horizontal_small">
+            <lightning-button
+                label="Show Modal"
+                variant="brand-outline"
+                onclick={modalHandler}>
+            </lightning-button>
+            <!-- <div>{msg}</div> -->
+            <img src={msg}/>
+            <template lwc:if={showModal}>
+                <c-modal-child onclose={closeHandler}></c-modal-child>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="OPP CONTROLS" icon-name="standard:opportunity">
+        <div class="slds-var-m-horizontal_medium">
+            <!-- buttons -->
+            <div class="slds-align_absolute-center slds-var-m-around_small">
+                <lightning-button
+                    label="Show All Opps"
+                    variant="brand-outline"
+                    class="slds-var-m-right_x-small"
+                    onclick={showAllOppsHandler}>
+                </lightning-button>
+                <lightning-button
+                    label="Show Total Amount"
+                    variant="brand"
+                    onclick={showAmountHandler}>
+                </lightning-button>
+            </div>
+
+            <!-- display opps -->
+            <template lwc:if={showAllOppsSection}>
+                <div class="display-section">
+                    <lightning-datatable
+                        key-field="Id"
+                        data={opps}
+                        columns={columns}>
+                    </lightning-datatable>
+                </div>
+            </template>
+
+            <!-- display total -->
+            <template lwc:if={showAmountSection}>
+                <div class="display-section">
+                    Total Opportunity Amount: {totalAmount}
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -26,15 +26,7 @@ public with sharing class OpportunityReminderBatch implements Database.Batchable
             tsk.Status = 'In-Progress';
             tasks.add(tsk);
         }
-        //insert tasks;
-        Database.SaveResult[] results = Database.insert(tasks, true);
-        for(Database.SaveResult result : results) {
-            if(!result.isSuccess()) {
-                List<String> errors = result.getErrors();
-                //prepare a log record. add it into collection
-            }
-        }
-        //insert logs;
+        insert tasks;
     }
 
     public void finish(Database.BatchableContext bc) {
