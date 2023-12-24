@@ -1,0 +1,37 @@
+<template>
+    <lightning-card>
+        <div class="slds-var-m-around_large">
+            
+            <div class="slds-grid slds-gutters">
+                <!-- task form -->
+                <div class="slds-col slds-size_5-of-12">
+                    <div class="section-header">Enter Details</div>
+                    <div class="task-form">
+                        <lightning-record-form
+                            object-api-name={objectName}
+                            fields={fields}
+                            onsuccess={successHandler}>
+                        </lightning-record-form>
+                    </div>
+                </div>
+
+                <!-- task table -->
+                <div class="slds-col slds-size_7-of-12">
+                    <div class="section-header">All Tasks</div>
+                    <div class="task-table">
+                        <template lwc:if={tasks.data}>
+                            <lightning-datatable
+                                key-field="Id"
+                                data={tasks.data}
+                                columns={columns}
+                                hide-checkbox-column
+                                onrowaction={callRowAction}>
+                            </lightning-datatable>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>
