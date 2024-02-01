@@ -10,16 +10,9 @@ export default class GetPicklistValuesStageName extends LightningElement {
     selectedStage;
 
     @wire(getObjectInfo, {objectApiName: OPP_OBJECT})
-    oppInfoHandler({data, error}) {
-        if(data) {
-            this.oppRtId = data.defaultRecordTypeId;
-        }
-        if(error) {
-            console.error(error);
-        }
-    }
+    oppRtDetails;
 
-    @wire(getPicklistValues, {fieldApiName: STAGE_FIELD, recordTypeId: '$oppRtId'})
+    @wire(getPicklistValues, {fieldApiName: STAGE_FIELD, recordTypeId: '$oppRtDetails.data.defaultRecordTypeId'})
     picklistHandler({data, error}) {
         if(data) {
             console.log(data);

@@ -74,4 +74,25 @@ global with sharing class AccountManager {
             throw new RecordNotFoundException('Account record not found. Please input a valid id in the body of the request.');
         }
     }
+
+
+    //Regular SOQL
+    List<Account> accounts = [SELECT Id, Name, Type, Industry, AccountNumber FROM Account WHERE AccountNumber = null]; //20,000 // 3MB
+    for(Account acc : accounts){
+        if(acc.Industry == 'Education'){
+            acc.AccountNumber = 'EDU012345';
+        }
+    }
+    update accounts;
+
+    //SOQL For Loop
+    List<Account> accounts = new List<Account>();
+    for(Account acc : [SELECT Id, Name, Type, Industry, AccountNumber FROM Account WHERE AccountNumber = null]){ //201-400 //0.03MB
+        if(acc.Industry == 'Education'){
+            acc.AccountNumber = 'EDU012345';
+        }
+        accounts.add(acc);
+    }
+    update accounts;
+    
 }
